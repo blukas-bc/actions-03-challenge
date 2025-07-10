@@ -17,9 +17,12 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v4
 
+            - name: Write something
+              run: echo "hi" > out.txt
+
             - name: Upload artifact
               uses: actions/upload-artifact@v4
               with:
                 name: ${{env.ART_NAME}}
-                path: output/
+                path: out.txt
 
