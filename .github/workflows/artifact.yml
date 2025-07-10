@@ -1,0 +1,25 @@
+name: artifact
+
+on: 
+    push:
+        branches:
+            - main
+
+env:
+    ART_NAME: "new_artifact"
+
+jobs:
+    build:
+        name: Main job
+        runs-on: windows-latest
+        
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Upload artifact
+              uses: actions/upload-artifact@v2
+              with:
+                name: ${{env.ART_NAME}}
+                path: output/
+
